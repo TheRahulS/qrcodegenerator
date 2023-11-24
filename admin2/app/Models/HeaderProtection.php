@@ -1,0 +1,1 @@
+<?php 	//write code here to check user is login	// else redirect to the login page	// other common variables?>
