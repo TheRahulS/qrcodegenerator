@@ -15,7 +15,7 @@
 <script src="plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
 <!-- page script -->
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         $("#example1").dataTable();
         $('#example2').dataTable({
             "bPaginate": true,

@@ -41,11 +41,12 @@
                 <?php
                 include '../config/connection.php';
 
-                $sql = "SELECT register.user_id, register.name, register.status, register.email, register.phone, users.name as user_name
+                $sql = "SELECT register.user_id, register.id, register.name, register.status, register.email, register.phone, users.name as user_name
             FROM register
             JOIN users ON register.user_id = users.id";
 
                 $result = mysqli_query($conn, $sql);
+
 
                 if ($result && mysqli_num_rows($result) > 0) {
                     $id = 1;
@@ -53,6 +54,7 @@
                     <form method="post" id="statusForm">
                         <?php
                         while ($row = mysqli_fetch_assoc($result)) {
+
                             ?>
                             <tr>
                                 <td>
@@ -71,11 +73,13 @@
                                     <?php echo $row['user_name']; ?>
                                 </td>
                                 <td>
-                                    <select name="status" onchange="updateStatus(this)">
+                                    <select name="status_<?php echo $row['user_id']; ?>"
+                                        data-user-id="<?php echo $row['user_id']; ?>" data-id="<?php echo $row['id']; ?>"
+                                        onchange="updateStatus(this)">
                                         <option value="active" <?php echo ($row['status'] == 'active') ? 'selected="selected"' : ''; ?>>Active</option>
                                         <option value="inactive" <?php echo ($row['status'] == 'inactive') ? 'selected="selected"' : ''; ?>>Inactive</option>
                                     </select>
-                                    <input type="hidden" name="user_id" value="<?php echo $row['user_id']; ?>">
+
                                 </td>
                             </tr>
                             <?php
@@ -86,22 +90,37 @@
                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
                     <script>
                         function updateStatus(selectElement) {
-                            var user_id = $(selectElement).next("input[name='user_id']").val();
-                            var newStatus = $(selectElement).val();
+                            // Unbind the onchange event to prevent recursion
+                            $(selectElement).off('change');
 
-                            // Update the status in the database using AJAX
+                            var user_id = selectElement.dataset.userId;
+                            var id = selectElement.dataset.id;
+                            var selectedStatus = selectElement.value;
+
                             $.ajax({
                                 type: "POST",
-                                url: "update_status.php", // Replace with the actual PHP script that handles the update
-                                data: { user_id: user_id, status: newStatus },
+                                url: "update_status.php",
+                                data: { id, status: selectedStatus, user_id },
+
                                 success: function (response) {
-                                    console.log(response); // Log the response from the server
+                                    try {
+
+                                        console.log(reaponse);
+                                    } catch (e) {
+                                        console.error("Error parsing JSON response:", e);
+                                        console.log("Non-JSON response:", response);
+                                    }
                                 },
-                                error: function (error) {
-                                    console.error("Error updating status: " + error.responseText);
-                                }
+                                error: function (xhr, status, error) {
+                                    console.error("Error updating status:");
+                                    console.log("Status: " + status);
+                                    console.log("Error: " + error);
+                                },
+
                             });
                         }
+
+
                     </script>
                     <?php
                 } else {

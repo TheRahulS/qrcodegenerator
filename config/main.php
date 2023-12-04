@@ -180,19 +180,20 @@ session_start();
 
                                                     exit();
                                                 }
-                                                $user_id = $_SESSION['id'];
+                                                $last_id = $conn->insert_id;
                                                 // echo $user_id;
                                                 $sql = "SELECT * FROM `register` where user_id='" . $user_id . "' AND status='active'";
 
-                                                // die(); // Replace 'your_table_name' with the actual table name
-                                                
+
 
                                                 $result = mysqli_query($conn, $sql);
+
 
 
                                                 if ($result && mysqli_num_rows($result) > 0) {
                                                     $id = 1;
                                                     while ($row = mysqli_fetch_assoc($result)) {
+
                                                         ?>
                                                         <tr>
                                                             <td>

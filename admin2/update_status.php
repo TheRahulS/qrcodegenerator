@@ -2,15 +2,16 @@
 include '../config/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_id = $_POST['user_id'];
+    print_r($_POST);
+    $id = $_POST['id'];
     $newStatus = $_POST['status'];
 
     // Update the status in the database
-    $updateQuery = "UPDATE `register` SET status='$newStatus' WHERE user_id='$user_id'";
+    $updateQuery = "UPDATE `register` SET status='$newStatus' WHERE id='" . $id . "'";
+
 
     $updateResult = mysqli_query($conn, $updateQuery);
-    echo $updateResult;
-    die();
+
 
     if ($updateResult) {
         echo "Status updated successfully!";
