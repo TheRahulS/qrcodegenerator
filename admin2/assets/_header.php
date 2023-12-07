@@ -68,12 +68,6 @@
 
                     </li>
 
-                    <li class="active">
-                        <a href="Forget.php">
-                            <i class="fa fa-home" aria-hidden="true"></i> <span>Forget Password</span>
-                        </a>
-
-                    </li>
 
 
                 </ul>

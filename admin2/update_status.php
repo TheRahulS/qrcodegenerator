@@ -2,7 +2,7 @@
 include '../config/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    print_r($_POST);
+    // print_r($_POST);
     $id = $_POST['id'];
     $newStatus = $_POST['status'];
 

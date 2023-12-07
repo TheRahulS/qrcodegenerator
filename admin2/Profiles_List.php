@@ -26,7 +26,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <table class="table table-striped" border="1px solid black" style="text-align:center">
+        <table class="table table-striped" border="1px solid black" style="text-align:center" id="tblList3">
             <thead style="background:black;color:white;">
                 <tr>
                     <th scope="col">S.no</th>
@@ -39,22 +39,39 @@
             </thead>
             <tbody>
                 <?php
+                // if(isset($_GET['id'])) {
+                //     $id = $_GET['id'];
+                //     exit();
+                // }
+                
                 include '../config/connection.php';
 
                 $sql = "SELECT register.user_id, register.id, register.name, register.status, register.email, register.phone, users.name as user_name
-            FROM register
-            JOIN users ON register.user_id = users.id";
+                FROM register
+                JOIN users ON register.user_id = users.id";
+
+
+
+
+
+
+
 
                 $result = mysqli_query($conn, $sql);
 
+                ;
 
-                if ($result && mysqli_num_rows($result) > 0) {
+
+
+                if($result && mysqli_num_rows($result) > 0) {
                     $id = 1;
                     ?>
                     <form method="post" id="statusForm">
                         <?php
-                        while ($row = mysqli_fetch_assoc($result)) {
-
+                        while($row = mysqli_fetch_assoc($result)) {
+                            // echo "<pre>";
+                            // print_r($row);
+                    
                             ?>
                             <tr>
                                 <td>
@@ -88,7 +105,9 @@
                         ?>
                     </form>
                     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
                     <script>
+
                         function updateStatus(selectElement) {
                             // Unbind the onchange event to prevent recursion
                             $(selectElement).off('change');

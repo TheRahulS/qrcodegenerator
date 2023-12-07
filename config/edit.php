@@ -5,7 +5,7 @@ include 'connection.php';
 
 
 
-if (isset($_GET["id"])) {
+if(isset($_GET["id"])) {
     $id = $_GET["id"];
     // echo $id;
 
@@ -15,8 +15,8 @@ if (isset($_GET["id"])) {
     $query = mysqli_query($conn, $sql);
     $result = mysqli_num_rows($query);
 
-    if ($result > 0) {
-        while ($row = mysqli_fetch_assoc($query)) {
+    if($result > 0) {
+        while($row = mysqli_fetch_assoc($query)) {
             // print_r($row);
             // die();   
             $name = $row['name'];
@@ -206,20 +206,20 @@ if (isset($_GET["id"])) {
                                             <!-- Images and Logo -->
                                             <div class="row">
                                                 <div class="col-lg-6 col-md-6 col-12 p-1">
-                                                    <div class="mb-2">
+                                                    <!-- <div class="mb-2">
                                                         <h6 class="t-d">Profile Photo: <small
                                                                 class="text-danger">(.jpeg,.jpg,.png)*</small> <br>
                                                             <small class="text-muted"> </small>
                                                         </h6>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-12 p-1">
-                                                            <label for="profileImageInput" class="custom-file-upload">
+                                                            <!-- <label for="profileImageInput" class="custom-file-upload">
                                                                 <i class="fa fa-upload"></i>
                                                             </label>
                                                             <input type="file" name="Profile" id="profileImageInput"
                                                                 accept=".jpeg, .jpg, .png" onchange="previewImage()"
-                                                                data-parsley-fileextension="jpeg,jpg,png" />
+                                                                data-parsley-fileextension="jpeg,jpg,png" /> -->
                                                         </div>
                                                         <!-- <div class="col-lg-12 col-md-12 col-12 p-1">
                                                             <div class="image-container">
@@ -229,18 +229,18 @@ if (isset($_GET["id"])) {
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6 col-12 p-1">
-                                                    <div class="mb-2">
+                                                    <!-- <div class="mb-2">
                                                         <h6 class="t-d">Logo: <small class="text-danger">(png)*</small>
                                                         </h6>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="row">
                                                         <div class="col-lg-12 col-md-12 col-12 p-1">
-                                                            <label for="logoImageInput" class="custom-file-upload">
+                                                            <!-- <label for="logoImageInput" class="custom-file-upload">
                                                                 <i class="fa fa-upload"></i>
                                                             </label>
                                                             <input type="file" name="Logo" id="logoImageInput"
                                                                 accept=" .png" onchange="previewLogoImage()"
-                                                                data-parsley-fileextension="png" />
+                                                                data-parsley-fileextension="png" /> -->
                                                         </div>
                                                         <!-- <div class="col-lg-12 col-md-12 col-12 p-1">
                                                             <div class="image-container">
@@ -639,7 +639,7 @@ if (isset($_GET["id"])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="accordion-item">
+                            <!-- <div class="accordion-item">
                                 <div class="accordion-header" id="headingFour">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapseFour" aria-expanded="false"
@@ -678,7 +678,7 @@ if (isset($_GET["id"])) {
                                                                     data-parsley-error-message="This file should not be larger than 5MB."
                                                                     data-parsley-max-file-size-message="This file should not be larger than %s mb." />
 
-                                                                <!-- <input type="file" name="imagepost" id="file-post" accept=".jpeg, .jpg, .png" required data-parsley-fileextension="jpeg,jpg,png" > -->
+                                                          
                                                             </p>
                                                         </div>
                                                     </div>
@@ -692,7 +692,7 @@ if (isset($_GET["id"])) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class=" col-lg-12 col-md-12 col-12 p-1 text-center py-3">
                             <button type="submit" class="btn btn-b"> Submit</button>

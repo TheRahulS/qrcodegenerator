@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <title>Login</title>
   <style>
     body {
@@ -15,6 +17,19 @@
     input {
       margin: 10px;
     }
+
+    body {
+      background-color: #F0ECE5;
+    }
+
+    .container {
+      width: 466px;
+      height: 190px;
+      border: 1px solid black;
+      margin-left: 450px;
+      margin-top: 100px;
+
+    }
   </style>
 </head>
 
@@ -22,21 +37,11 @@
   <h2>Login</h2>
 
   <?php
+  include '../config/connection.php';
   // Check if the form is submitted
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if($_SERVER["REQUEST_METHOD"] == "POST") {
     // Database connection parameters
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "demo";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-    }
+  
 
     // Retrieve user input
     $email = $_POST['email'];
@@ -47,7 +52,7 @@
     $result = $conn->query($sql);
 
     // Check if the query returned a row
-    if ($result->num_rows > 0) {
+    if($result->num_rows > 0) {
       // Login successful
       $row = $result->fetch_assoc();
 
@@ -62,14 +67,16 @@
   }
   ?>
 
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email" required><br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required><br>
+  <div class="container">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required><br>
 
-    <input type="submit" value="Login">
-  </form>
+      <input class="btn btn-primary" type="submit" value="Login">
+    </form>
+  </div>
 </body>
 
 </html>

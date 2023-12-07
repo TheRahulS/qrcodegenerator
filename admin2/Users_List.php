@@ -45,22 +45,29 @@
 
 
                 // echo $user_id;
-                $sql = "select name,email,phone,username from users";
+                $sql = "select id,name,email,phone,username from users";
                 // die(); // Replace 'your_table_name' with the actual table name
                 
 
                 $result = mysqli_query($conn, $sql);
 
-                if ($result && mysqli_num_rows($result) > 0) {
+                if($result && mysqli_num_rows($result) > 0) {
                     $id = 1;
-                    while ($row = mysqli_fetch_assoc($result)) {
+                    while($row = mysqli_fetch_assoc($result)) {
                         ?>
                         <tr>
                             <td>
+
                                 <?php echo $id; ?>
+
+
                             </td>
                             <td>
-                                <?php echo $row['name']; ?>
+
+                                <a href="Profiles_List.php?id=<?php echo $row['id']; ?>">
+                                    <?php echo $row['name']; ?>
+                                </a>
+
                             </td>
                             <td>
                                 <?php echo $row['email']; ?>

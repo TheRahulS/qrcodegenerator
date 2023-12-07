@@ -5,13 +5,12 @@
   <?php include './assets/_head.php'; ?>
 </head>
 
-<!-- header and sidebar -->
 <?php include './assets/_header.php'; ?>
-<!--// header and sidebar -->
 
-<!-- Right side column all content  -->
+
+
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
+
   <section class="content-header">
     <h1>
       Dashboard

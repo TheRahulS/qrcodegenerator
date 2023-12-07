@@ -1,8 +1,7 @@
 <?php
 include 'connection.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = isset($_POST['id']) ? intval($_POST['id']) : 0;
 
     $name = mysqli_real_escape_string($conn, $_POST['name']);
@@ -54,25 +53,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         instagram = '$instagram_link',
         facebook = '$facebook',
         twitter = '$twitter_link',
-      
-     
+
+
         linkedln = '$linkedin_link'
         WHERE id = $id";
 
 
     $updateQuery = mysqli_query($conn, $updateSql);
 
-
-
-
-    if ($updateQuery) {
+    if($updateQuery) {
         echo "<script>alert('Data updated successfully'); window.location.href = 'main.php';</script>";
     } else {
-        echo "Update failed: " . mysqli_error($conn);
+        echo "Update failed: ".mysqli_error($conn);
     }
 }
-
-
 
 
 

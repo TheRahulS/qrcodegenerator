@@ -1,7 +1,6 @@
 <?php
 
-
-session_start(); // Start the session
+session_start();
 
 include '../config/connection.php'; // Include the database connection file
 
@@ -48,12 +47,6 @@ if (isset($_POST['submit'])) {
 
 
 ?>
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
